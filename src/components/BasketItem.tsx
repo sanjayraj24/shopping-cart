@@ -8,23 +8,26 @@ export default function BasketItem({ item }: { item: BillItem }) {
   const dispatch = useDispatch<AppDispatch>()
 
   return (
-    <li className="px-3 py-3 text-sm transition-colors hover:bg-emerald-50/40 sm:px-4">
-      <div className="flex items-center justify-between gap-2">
-        <p className="font-medium text-slate-800">{item.name}</p>
-        <div className="flex items-center gap-1.5">
+    <li className="list-group-item">
+      <div className="d-flex justify-content-between align-items-center">
+        <div>
+          <p className="mb-0 fw-medium text-dark">{item.name}</p>
+          <p className="mb-0 small text-muted">Unit price: {formatMoney(item.unitPrice)}</p>
+        </div>
+        <div className="d-flex align-items-center gap-2">
           <button
             type="button"
             onClick={() => dispatch(decreaseQty(item.productId))}
-            className="flex h-7 w-7 items-center justify-center rounded-md border border-slate-200 bg-white text-slate-600 transition-all duration-200 hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-700 active:scale-95"
+            className="btn btn-outline-secondary btn-sm"
             aria-label={`Decrease ${item.name}`}
           >
             -
           </button>
-          <span className="min-w-[18px] text-center font-medium">{item.qty}</span>
+          <span className="px-2">{item.qty}</span>
           <button
             type="button"
             onClick={() => dispatch(increaseQty(item.productId))}
-            className="flex h-7 w-7 items-center justify-center rounded-md border border-slate-200 bg-white text-slate-600 transition-all duration-200 hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-700 active:scale-95"
+            className="btn btn-outline-secondary btn-sm"
             aria-label={`Increase ${item.name}`}
           >
             +
@@ -32,14 +35,13 @@ export default function BasketItem({ item }: { item: BillItem }) {
         </div>
       </div>
 
-      <p className="mt-1.5 text-slate-500">Unit price: {formatMoney(item.unitPrice)}</p>
-      <p className="text-slate-500">
+      <div className="mt-2 small text-muted">
         {formatMoney(item.unitPrice)} x {item.qty} = {formatMoney(item.lineSubtotal)}
-      </p>
+      </div>
       {item.saving > 0 && (
-        <p className="font-medium text-emerald-600">Saving: {formatMoney(item.saving)}</p>
+        <p className="mb-0 small text-success">Saving: {formatMoney(item.saving)}</p>
       )}
-      <p className="font-medium text-slate-700">Cost: {formatMoney(item.lineTotal)}</p>
+      <p className="mb-0 fw-semibold">Cost: {formatMoney(item.lineTotal)}</p>
     </li>
   )
 }

@@ -16,11 +16,11 @@ export default function Products() {
   }, [])
 
   return (
-    <section className="overflow-hidden rounded-lg border border-indigo-100 bg-white shadow-sm">
-      <h2 className="border-b border-indigo-100 bg-indigo-50 px-4 py-2.5 text-sm font-semibold text-indigo-800">
-        Products
-      </h2>
-      <ul className="divide-y divide-slate-100">
+    <section className="card">
+      <div className="card-header bg-light">
+        <h2 className="mb-0 small fw-semibold">Products</h2>
+      </div>
+      <ul className="list-group list-group-flush">
         {products.map((product) => (
           <ProductItem key={product.id} product={product} />
         ))}

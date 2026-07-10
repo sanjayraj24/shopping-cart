@@ -8,15 +8,15 @@ export default function ProductItem({ product }: { product: Product }) {
   const dispatch = useDispatch<AppDispatch>()
 
   return (
-    <li className="flex items-center justify-between gap-2 px-3 py-3 transition-colors hover:bg-indigo-50/60 sm:px-4">
-      <div className="min-w-0">
-        <p className="font-medium text-slate-800">{product.name}</p>
-        <p className="text-sm font-medium text-indigo-600">{formatMoney(product.price)}</p>
+    <li className="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <p className="mb-0 fw-medium text-dark">{product.name}</p>
+        <p className="mb-0 small text-primary">{formatMoney(product.price)}</p>
       </div>
       <button
         type="button"
         onClick={() => dispatch(addItem(product.id))}
-        className="shrink-0 rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-medium text-white shadow-sm transition-all duration-200 hover:bg-indigo-700 hover:shadow-md active:scale-95"
+        className="btn btn-primary btn-sm"
       >
         Add
       </button>

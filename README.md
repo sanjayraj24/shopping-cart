@@ -63,3 +63,17 @@ src/
   utils/          Bill calculation logic
   test/           Unit tests
 ```
+
+Project Flow
+
+**React Folder Structure**
+
+react - functional components : Router, (Props, Props Drilling) Context API, (Hooks useState, useEffect), Conditional rendering, Fetch API, Axios API,
+
+Tailwind CSS 
+
+TypeScript
+
+FireBase
+
+Redux toolkit
